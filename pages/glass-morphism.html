@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Savi - Moto Vlogger | Premium Light Glass</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <style>
+    /* 🎨 Premium Light Glass Color Palette */
+    :root {
+      --orange: #ff6700;
+      --orange-glow: rgba(255, 103, 0, 0.25);
+      
+      /* Advanced Glass Variables */
+      --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.15) 100%);        
+      --glass-element: linear-gradient(135deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0.25) 100%);     
+      --glass-element-hover: linear-gradient(135deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 100%);
+      
+      /* Borders & Highlights for 3D Edge */
+      --glass-border: rgba(255, 255, 255, 0.5);      
+      --glass-border-hover: rgba(255, 255, 255, 0.8);
+      
+      /* Softened Drop Shadows + Inner Edge Highlights */
+      --glass-shadow: 0 12px 40px rgba(0, 0, 0, 0.08); 
+      --glass-inset: inset 0 1px 2px rgba(255, 255, 255, 0.9), inset 0 0 8px rgba(255, 255, 255, 0.2);
+      
+      /* Text colors */
+      --text-primary: #1a1a1a;
+      --text-secondary: #4a4a4a;
+      --text-light: #666666;
+      
+      /* Frosted Effect */
+      --blur-amount: 16px;
+      --blur-amount-strong: 24px;
+
+      /* Smooth Animation Curve */
+      --smooth-transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    /* Reset & Base */
+    * { 
+      box-sizing: border-box; 
+      margin: 0; 
+      padding: 0; 
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    
+    body { 
+      background: url('Bg.png') no-repeat center center fixed; 
+      background-size: cover;
+      display: flex; 
+      justify-content: center; 
+      color: var(--text-primary);
+      min-height: 100vh;
+    }
+    
+    /* 🪟 Light Glass Container */
+    .container {
+      width: 100%;
+      max-width: 420px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(var(--blur-amount));
+      -webkit-backdrop-filter: blur(var(--blur-amount));
+      border-left: 1px solid var(--glass-border);
+      border-right: 1px solid rgba(255, 255, 255, 0.2); 
+      min-height: 100vh;
+      position: relative;
+      padding-bottom: 20px;
+      box-shadow: var(--glass-shadow);
+    }
+
+    /* 🌅 Banner with Light Gradient */
+    .banner-wrapper {
+      position: absolute;
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 280px;
+      overflow: hidden;
+      z-index: 0;
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 30%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0) 100%);
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 30%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0) 100%);
+    }
+    
+    .banner-slides {
+      display: flex;
+      width: 300%;
+      height: 100%;
+      transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .banner-slide {
+      width: 100%; 
+      height: 100%;
+      background-size: cover; 
+      background-position: center;
+    }
+
+    /* ⭕ Profile Section */
+    .profile-section {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      margin-top: 160px;
+      padding: 0 20px;
+    }
+    
+    .profile-img {
+      width: 120px; 
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid rgba(255, 255, 255, 0.9);
+      object-fit: cover;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12), inset 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: var(--smooth-transition);
+    }
+    
+    .profile-img:hover {
+      transform: scale(1.05) translateY(-5px);
+      border-color: var(--orange);
+      box-shadow: 0 15px 35px rgba(255, 103, 0, 0.2);
+    }
+    
+    .profile-name { 
+      margin-top: 15px; 
+      font-size: 28px; 
+      font-weight: 700; 
+      color: var(--text-primary);
+      text-shadow: 0 2px 15px rgba(255, 255, 255, 0.8);
+    }
+    
+    .profile-title { 
+      color: var(--text-secondary); 
+      font-size: 16px; 
+      margin-bottom: 20px; 
+      font-weight: 500;
+    }
+    
+    /* Mini Socials */
+    .mini-socials { 
+      display: flex; 
+      justify-content: center; 
+      gap: 18px; 
+      margin-bottom: 35px;
+    }
+    
+    .mini-socials a { 
+      color: var(--text-primary); 
+      font-size: 22px;
+      transition: var(--smooth-transition); 
+      opacity: 0.8;
+    }
+    
+    .mini-socials a:hover { 
+      color: var(--orange); 
+      transform: translateY(-4px) scale(1.15);
+      opacity: 1;
+      text-shadow: 0 4px 10px rgba(255, 103, 0, 0.3);
+    }
+
+    /* 🎬 Premium Video Card */
+    .section-container { 
+      padding: 0 20px; 
+      position: relative; 
+      z-index: 2; 
+      margin-bottom: 30px; 
+    }
+
+    .video-card {
+      display: block;
+      background: var(--glass-element);
+      backdrop-filter: blur(var(--blur-amount-strong));
+      -webkit-backdrop-filter: blur(var(--blur-amount-strong));
+      border: 1px solid var(--glass-border);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      border-right: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 24px; 
+      padding: 12px; 
+      text-decoration: none;
+      box-shadow: var(--glass-shadow), var(--glass-inset);
+      transition: var(--smooth-transition);
+      overflow: hidden;
+    }
+
+    .video-card:hover {
+      border-color: rgba(255, 255, 255, 0.9);
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(255, 103, 0, 0.15), inset 0 1px 3px rgba(255, 255, 255, 1);
+    }
+
+    .thumbnail-wrapper {
+      position: relative;
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+    }
+
+    .video-thumbnail {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .video-card:hover .video-thumbnail {
+      transform: scale(1.08);
+    }
+
+    .play-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background 0.3s ease;
+    }
+
+    .play-overlay i {
+      color: white;
+      font-size: 40px;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .video-card:hover .play-overlay {
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    .video-card:hover .play-overlay i {
+      transform: scale(1.2);
+      color: var(--orange);
+    }
+
+    .video-info {
+      padding: 14px 8px 4px 8px;
+    }
+
+    .video-title {
+      color: var(--text-primary);
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      line-height: 1.3;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .video-subtitle {
+      color: var(--text-secondary);
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+    }
+    
+    .video-card:hover .video-subtitle {
+      color: var(--orange);
+    }
+
+    /* 📱 Light Glass Pills */
+    .social-pill {
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      width: 100%; 
+      padding: 16px; 
+      margin-bottom: 24px; 
+      background: var(--glass-element);
+      backdrop-filter: blur(var(--blur-amount-strong));
+      -webkit-backdrop-filter: blur(var(--blur-amount-strong));
+      border: 1px solid var(--glass-border);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      border-right: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 60px;
+      text-decoration: none; 
+      color: var(--text-primary);
+      font-weight: 600; 
+      font-size: 17px; 
+      box-shadow: var(--glass-shadow), var(--glass-inset);
+      transition: var(--smooth-transition);
+    }
+    
+    .social-pill i { 
+      margin-right: 12px; 
+      font-size: 22px; 
+      color: var(--orange);
+    }
+    
+    .social-pill:hover { 
+      background: var(--glass-element-hover);
+      border-color: var(--glass-border-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05), inset 0 1px 3px rgba(255, 255, 255, 1); 
+    }
+
+    /* ⚙️ Light Glass Accordion */
+    .accordion-btn {
+      display: flex; 
+      justify-content: center; 
+      align-items: center;
+      gap: 12px; 
+      width: 100%; 
+      padding: 18px 22px; 
+      margin-bottom: 20px; 
+      background: var(--glass-element);
+      backdrop-filter: blur(var(--blur-amount-strong));
+      -webkit-backdrop-filter: blur(var(--blur-amount-strong));
+      border: 1px solid var(--glass-border);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      border-right: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 60px;
+      color: var(--text-primary); 
+      font-weight: 600; 
+      font-size: 17px; 
+      cursor: pointer; 
+      transition: var(--smooth-transition); 
+      outline: none;
+      box-shadow: var(--glass-shadow), var(--glass-inset);
+    }
+    
+    .accordion-btn:hover { 
+      background: var(--glass-element-hover);
+      border-color: var(--glass-border-hover);
+      transform: translateY(-2px);
+    }
+    
+    .accordion-btn.active {
+      border-color: var(--orange);
+      background: linear-gradient(135deg, rgba(255, 103, 0, 0.15) 0%, rgba(255, 103, 0, 0.05) 100%);
+      box-shadow: 0 10px 30px rgba(255, 103, 0, 0.1), var(--glass-inset);
+    }
+    
+    .arrow-icon { 
+      transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+      color: var(--orange);
+    }
+    
+    .accordion-btn.active .arrow-icon { 
+      transform: rotate(180deg);
+    }
+
+    .accordion-content {
+      max-height: 0; 
+      overflow: hidden; 
+      transition: max-height 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+      padding: 0 8px;
+    }
+
+    /* Light Glass Cards */
+    .gear-card {
+      background: var(--glass-element);
+      backdrop-filter: blur(var(--blur-amount-strong));
+      -webkit-backdrop-filter: blur(var(--blur-amount-strong));
+      border: 1px solid var(--glass-border);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      border-right: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 24px; 
+      padding: 18px; 
+      margin-bottom: 24px; 
+      box-shadow: var(--glass-shadow), var(--glass-inset);
+      transition: var(--smooth-transition);
+    }
+    
+    .gear-card:hover {
+      border-color: rgba(255, 255, 255, 0.8);
+      transform: translateY(-5px) scale(1.01);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06), inset 0 1px 3px rgba(255, 255, 255, 1);
+    }
+    
+    .gear-img {
+      width: 100%; 
+      height: 180px; 
+      object-fit: cover;
+      border-radius: 16px; 
+      margin-bottom: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+    
+    .gear-title { font-size: 20px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; }
+    .gear-desc { font-size: 14px; color: var(--text-secondary); margin-bottom: 12px; }
+    
+    .gear-rating { color: var(--orange); font-size: 16px; margin-bottom: 18px; letter-spacing: 3px; }
+    .gear-rating span { color: var(--text-light); font-size: 14px; letter-spacing: 0; margin-left: 8px; }
+    
+    /* Amazon Button */
+    .amazon-btn {
+      background: linear-gradient(135deg, var(--orange) 0%, #e05a00 100%);
+      color: white;
+      padding: 14px; 
+      border-radius: 40px; 
+      text-decoration: none;
+      font-weight: 600; 
+      font-size: 16px;
+      display: flex; 
+      justify-content: center; 
+      align-items: center;
+      transition: var(--smooth-transition); 
+      width: 80%; 
+      margin: 0 auto;
+      box-shadow: 0 8px 20px rgba(255, 103, 0, 0.25), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+      border: 1px solid rgba(255,255,255,0.4);
+    }
+    
+    .amazon-btn:hover { 
+      transform: scale(1.04) translateY(-2px); 
+      box-shadow: 0 12px 30px rgba(255, 103, 0, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.4); 
+    }
+
+    /* 📞 Contact Button */
+    .contact-btn {
+      display: block; width: 100%; padding: 18px;
+      background: linear-gradient(135deg, var(--orange) 0%, #e05a00 100%);
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 60px;
+      color: white; font-size: 18px; font-weight: 700;
+      text-align: center; text-decoration: none;
+      box-shadow: 0 8px 25px rgba(255, 103, 0, 0.25), inset 0 2px 5px rgba(255, 255, 255, 0.3);
+      transition: var(--smooth-transition);
+      margin-bottom: 20px;
+    }
+    
+    .contact-btn:hover { 
+      transform: scale(1.03) translateY(-4px); 
+      box-shadow: 0 15px 35px rgba(255, 103, 0, 0.4), inset 0 2px 5px rgba(255, 255, 255, 0.4); 
+    }
+
+    /* 💻 DEVELOPER FOOTER CSS */
+    .developer-footer {
+      text-align: center;
+      padding: 20px 0;
+      margin-top: 10px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+      font-weight: 500;
+      background: linear-gradient(to top, rgba(255,255,255,0.3) 0%, transparent 100%);
+    }
+    
+    .developer-footer a {
+      color: var(--orange);
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    
+    .developer-footer a:hover {
+      color: #e05a00;
+      text-decoration: underline;
+    }
+
+    /* ❤️ Breathing Heart Animation */
+    @keyframes heartbeat {
+      0% { transform: scale(1); }
+      14% { transform: scale(1.3); }
+      28% { transform: scale(1); }
+      42% { transform: scale(1.3); }
+      70% { transform: scale(1); }
+    }
+    
+    .heart-icon {
+      display: inline-block;
+      color: #ff3b30;
+      animation: heartbeat 1.5s infinite;
+      margin: 0 3px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <div class="banner-wrapper">
+      <div class="banner-slides" id="bannerSlides">
+        <div class="banner-slide" style="background-image: url('https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=800&auto=format&fit=crop');"></div>
+        <div class="banner-slide" style="background-image: url('https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?q=80&w=800&auto=format&fit=crop');"></div>
+        <div class="banner-slide" style="background-image: url('https://images.unsplash.com/photo-1558981285-6f0c94958bb6?q=80&w=800&auto=format&fit=crop');"></div>
+      </div>
+    </div>
+
+    <div class="profile-section">
+      <img src="Pr.jpg" alt="Savi Profile" class="profile-img" onerror="this.src='https://via.placeholder.com/120x120?text=SAM'">
+      <h1 class="profile-name">SAM MOTO VLOG</h1>
+      <p class="profile-title">Moto Vlogger | Rider | Gear Reviewer</p>
+      
+      <div class="mini-socials">
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="#"><i class="fa-brands fa-telegram"></i></a>
+        <a href="#"><i class="fa-brands fa-threads"></i></a>
+        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+      </div>
+    </div>
+
+    <div class="section-container">
+      <h2 style="color: var(--text-primary); margin-bottom: 16px; font-size: 18px; text-align: center; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Latest Vlog 🎬</h2>
+      
+      <a href="https://youtu.be/dQw4w9WgXcQ" target="_blank" class="video-card">
+        <div class="thumbnail-wrapper">
+          <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Latest YouTube Video" class="video-thumbnail">
+          <div class="play-overlay">
+            <i class="fa-solid fa-play"></i>
+          </div>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Ladakh Ride Part 1 - The Beginning! 🏔️🏍️</h3>
+          <p class="video-subtitle">Watch on YouTube <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 12px; margin-left: 4px;"></i></p>
+        </div>
+      </a>
+    </div>
+
+    <div class="section-container">
+      <a href="#" class="social-pill"><i class="fa-brands fa-instagram"></i> Instagram</a>
+      <a href="#" class="social-pill"><i class="fa-brands fa-youtube"></i> YouTube</a>
+      <a href="#" class="social-pill"><i class="fa-brands fa-facebook-f"></i> Facebook</a>
+      <a href="#" class="social-pill"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+      <a href="#" class="social-pill"><i class="fa-brands fa-telegram"></i> Telegram</a>
+      <a href="#" class="social-pill"><i class="fa-brands fa-threads"></i> Threads</a>
+    </div>
+
+    <div class="section-container">
+      <button class="accordion-btn">
+        <span>My Garage 🏍️</span> <i class="fa-solid fa-chevron-down arrow-icon"></i>
+      </button>
+      
+      <div class="accordion-content">
+        <div class="gear-card">
+          <img src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?q=80&w=600&auto=format&fit=crop" loading="lazy" alt="KTM Duke 390" class="gear-img">
+          <div class="gear-title">KTM Duke 390</div>
+          <div class="gear-desc">2023 Model | Custom Exhaust | Aftermarket ECU</div>
+        </div>
+        <div class="gear-card">
+          <img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?q=80&w=600&auto=format&fit=crop" loading="lazy" alt="Royal Enfield Himalayan" class="gear-img">
+          <div class="gear-title">Royal Enfield Himalayan</div>
+          <div class="gear-desc">450cc | Adventure Ready | Rally Kit Installed</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-container">
+      <button class="accordion-btn">
+        <span>Riding Gear ⚙️</span> <i class="fa-solid fa-chevron-down arrow-icon"></i>
+      </button>
+      
+      <div class="accordion-content">
+        
+        <div class="gear-card">
+          <img src="https://images.unsplash.com/photo-1552345388-6932479e0a16?q=80&w=600&auto=format&fit=crop" loading="lazy" alt="GoPro Hero 12" class="gear-img">
+          <div class="gear-title">GoPro Hero 12 Black</div>
+          <div class="gear-desc">5.3K | Hypersmooth 6.0 | Endurance Battery</div>
+          <div class="gear-rating">★★★★★ <span>(4.9 | 2.3k+ reviews)</span></div>
+          <a href="#" class="amazon-btn">Buy on Amazon 🛒</a>
+        </div>
+
+        <div class="gear-card">
+          <img src="https://images.unsplash.com/photo-1557161186-53842c2dbaf8?q=80&w=600&auto=format&fit=crop" loading="lazy" alt="Axor Helmet" class="gear-img">
+          <div class="gear-title">Axor Street Helmet</div>
+          <div class="gear-desc">Matte Black | DOT Certified | Dual Visor</div>
+          <div class="gear-rating">★★★★☆ <span>(4.6 | 1.8k+ reviews)</span></div>
+          <a href="#" class="amazon-btn">Buy on Amazon 🛒</a>
+        </div>
+
+        <div class="gear-card">
+          <img src="https://images.unsplash.com/photo-1601758003122-53c40e686a19?q=80&w=600&auto=format&fit=crop" loading="lazy" alt="Rynox Gloves" class="gear-img">
+          <div class="gear-title">Rynox Air GT Gloves</div>
+          <div class="gear-desc">Summer Mesh | Carbon Knuckle | Touchscreen</div>
+          <div class="gear-rating">★★★★☆ <span>(4.7 | 1.2k+ reviews)</span></div>
+          <a href="#" class="amazon-btn">Buy on Amazon 🛒</a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="section-container">
+      <a href="mailto:collabs@savi.com" class="contact-btn">📹 Collab With Me 🤝</a>
+    </div>
+
+    <div class="developer-footer">
+      Developed with <span class="heart-icon">♥️</span> by 
+      <a href="https://instagram.com/manish.io_" target="_blank" rel="noopener noreferrer">Manish</a>
+    </div>
+
+  </div>
+
+  <script>
+    // Banner Slider
+    const slidesContainer = document.getElementById('bannerSlides');
+    let currentIndex = 0;
+    const totalSlides = 3;
+
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % totalSlides;
+      slidesContainer.style.transform = `translateX(-${currentIndex * 33.33}%)`;
+    }, 5000);
+
+    // Accordion
+    const accordions = document.querySelectorAll(".accordion-btn");
+
+    accordions.forEach(btn => {
+      btn.addEventListener("click", function() {
+        const isActive = this.classList.contains("active");
+        const content = this.nextElementSibling;
+        
+        // Close others
+        accordions.forEach(otherBtn => {
+          if (otherBtn !== this && otherBtn.classList.contains("active")) {
+            otherBtn.classList.remove("active");
+            otherBtn.nextElementSibling.style.maxHeight = null;
+          }
+        });
+        
+        // Toggle current
+        this.classList.toggle("active");
+        
+        if (!isActive) {
+          content.style.maxHeight = content.scrollHeight + 40 + "px";
+        } else {
+          content.style.maxHeight = null;
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
